@@ -1,0 +1,15 @@
+{
+    "name": "wir_wolf/docker-php-ubuntu-vs-alpine",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andru Cherny",
+            "email": "wiroatom@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "twig/twig": "*"
+    }
+}
