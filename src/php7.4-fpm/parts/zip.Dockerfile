@@ -8,4 +8,5 @@ RUN set -eux \
 	# Installation
 	&& docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) zip \
     && php -m | grep -oiE '^zip$' \
+    && php-fpm -m | grep -oiE '^zip$' \
 	&& true

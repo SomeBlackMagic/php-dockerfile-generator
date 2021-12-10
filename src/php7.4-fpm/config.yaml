@@ -1,0 +1,11 @@
+modules:
+  - swoole:
+      depens:
+        - curl
+        - sockets
+  - http:
+      depens:
+
+  phalcon:
+      depens:
+        - psr

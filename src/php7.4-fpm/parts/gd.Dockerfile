@@ -8,4 +8,5 @@ RUN set -eux \
 	# Installation
 	&& docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) gd \
     && php -m | grep -oiE '^gd$' \
+    && php-fpm -m | grep -oiE '^gd$' \
 	&& true

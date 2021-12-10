@@ -32,6 +32,7 @@ $template = $twig->load('template.Dockerfile');
 
 $output = $template->render(['modules' => $modulesRawData ]);
 
+shell_exec('rm -rvf dist/*');
 
 $f=fopen('dist/Dockerfile','w');
 fwrite($f,$output);
