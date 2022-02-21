@@ -8,6 +8,8 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 $conf = yaml_parse_file('config.yaml');
 
+$conf = $conf['data'];
+
 $phpVersion = $conf['phpVersion'];
 $phpMode = $conf['phpMode'];
 $includeModules = $conf['includeModules'];

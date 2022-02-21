@@ -2,7 +2,7 @@ FROM php:7.4-fpm-alpine
 
 # Fix timezone (only required for testing to stop php -v and php-fpm -v from complaining to stderr)
 RUN set -eux \
-	&& echo "date.timezone=UTC" > /usr/local/etc/php/php.ini
+    && echo "date.timezone=UTC" > /usr/local/etc/php/php.ini
 
 ###
 ### Upgrade (install ps)
@@ -27,16 +27,16 @@ RUN set -eux \
 ### Verify
 ###
 RUN set -eux \
-	&& echo "date.timezone=UTC" > /usr/local/etc/php/php.ini \
-	&& php -v | grep -oE 'PHP\s[.0-9]+' | grep -oE '[.0-9]+' | grep '^7.4' \
-	\
-	&& PHP_ERROR="$( php -v 2>&1 1>/dev/null )" \
-	&& if [ -n "${PHP_ERROR}" ]; then echo "${PHP_ERROR}"; false; fi \
-	&& PHP_ERROR="$( php -i 2>&1 1>/dev/null )" \
-	&& if [ -n "${PHP_ERROR}" ]; then echo "${PHP_ERROR}"; false; fi \
-	\
-	&& rm -f /usr/local/etc/php/php.ini \
-	&& true
+    && echo "date.timezone=UTC" > /usr/local/etc/php/php.ini \
+    && php -v | grep -oE 'PHP\s[.0-9]+' | grep -oE '[.0-9]+' | grep '^7.4' \
+    \
+    && PHP_ERROR="$( php -v 2>&1 1>/dev/null )" \
+    && if [ -n "${PHP_ERROR}" ]; then echo "${PHP_ERROR}"; false; fi \
+    && PHP_ERROR="$( php -i 2>&1 1>/dev/null )" \
+    && if [ -n "${PHP_ERROR}" ]; then echo "${PHP_ERROR}"; false; fi \
+    \
+    && rm -f /usr/local/etc/php/php.ini \
+    && true
 
 ###
 ### Envs

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 set -e
 set -u
 set -o pipefail
@@ -20,6 +21,10 @@ fi
 # Path to scripts to source
 CONFIG_DIR="/docker-entrypoint.d"
 
+
+###
+### Source libs
+###
 init="$( find "${CONFIG_DIR}" -name '*.sh' -type f | sort -u )"
 for f in ${init}; do
  # shellcheck disable=SC1090

@@ -1,11 +1,11 @@
 # -------------------- Installing PHP Extension: igbinary --------------------
 RUN set -eux \
-	# Installation: Generic
-	# Type:         PECL extension
-	# Default:      Pecl command
-	&& pecl install igbinary \
-	# Enabling
-	&& docker-php-ext-enable igbinary \
+    # Installation: Generic
+    # Type:         PECL extension
+    # Default:      Pecl command
+    && pecl install igbinary \
+    # Enabling
+    && docker-php-ext-enable igbinary \
     && php -m | grep -oiE '^igbinary$' \
     && php-fpm -m | grep -oiE '^igbinary$' \
     && true

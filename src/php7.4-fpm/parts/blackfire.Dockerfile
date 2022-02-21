@@ -1,8 +1,8 @@
 # -------------------- Installing PHP Extension: blackfire --------------------
 RUN set -eux \
-	# Installation: Generic
-	# Type:         Custom extension
-	&& version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
+    # Installation: Generic
+    # Type:         Custom extension
+    && version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
     && curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s https://blackfire.io/api/v1/releases/probe/php/linux/amd64/$version \
     && mkdir -p /tmp/blackfire \
     && tar zxpf /tmp/blackfire-probe.tar.gz -C /tmp/blackfire \
@@ -11,4 +11,4 @@ RUN set -eux \
     && echo "extension=blackfire" >> /usr/local/etc/php/conf.d/docker-php-ext-blackfire.ini \
     && php -m | grep -oiE '^blackfire' \
     && php-fpm -m | grep -oiE '^blackfire' \
-	&& true
+    && true
