@@ -1,0 +1,7 @@
+modules:
+  - swoole:
+      depens:
+        - curl
+        - sockets
+  - http:
+      depens:
