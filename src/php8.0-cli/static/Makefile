@@ -1,2 +1,2 @@
 test:
-    docker build . --tag php-cli-alpine-test
+	docker build . --tag php-cli-alpine-test
