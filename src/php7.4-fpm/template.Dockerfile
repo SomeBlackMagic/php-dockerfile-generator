@@ -54,11 +54,8 @@ RUN set -eux \
     && adduser -u ${MY_UID} -G ${MY_GROUP} -s /bin/sh -D ${MY_USER} \
     && true
 
-# Must set this value for the bash shell to source
-# the '/etc/bashrc' file.
-# See: https://stackoverflow.com/q/29021704
-ENV BASH_ENV /etc/bashrc
-COPY ./data/bashrc /etc/bashrc
+ENV BASH_ENV /etc/profile.d/bash_profile.sh
+COPY ./data/bash_profile.sh /etc/profile.d/bash_profile.sh
 
 ###
 ### Copy files
@@ -66,7 +63,27 @@ COPY ./data/bashrc /etc/bashrc
 ###
 COPY ./data/php.ini /usr/local/etc/php/conf.d/default-php.ini
 COPY ./data/www.conf /usr/local/etc/php-fpm.d/www.conf
+COPY ./data/docker.conf /usr/local/etc/php-fpm.d/docker.conf
 COPY ./data/global.conf /usr/local/etc/php-fpm.d/global.conf
+
+ENV PHP_FPM_GLOBAL_ERROR_LOG /proc/self/fd/2
+ENV PHP_FPM_GLOBAL_LOG_LEVEL notice
+ENV PHP_FPM_GLOBAL_LOG_BUFFERING no
+ENV PHP_FPM_WWW_ACCESS_LOG_PATH /proc/self/fd/1
+ENV PHP_FPM_WWW_SLOWLOG_PATH /proc/self/fd/1
+ENV PHP_FPM_WWW_CLEAR_ENV no
+ENV PHP_FPM_WWW_CATCH_WORKERS_OUTPUT yes
+ENV PHP_FPM_WWW_DECORATE_WORKERS_OUTPUT no
+ENV PHP_FPM_WWW_PM dynamic
+ENV PHP_FPM_WWW_PM_MAX_CHILDREN 6
+ENV PHP_FPM_WWW_PM_START_SERVERS 5
+ENV PHP_FPM_WWW_PM_MIN_SPARE_SERVERS 3
+ENV PHP_FPM_WWW_PM_MAX_SPARE_SERVERS 6
+ENV PHP_FPM_WWW_PM_PROCESS_IDLE_TIMEOUT 10s
+ENV PHP_FPM_WWW_PM_MAX_REQUESTS 100
+ENV PHP_FPM_WWW_REQUEST_SLOWLOG_TIMEOUT 10
+ENV PHP_FPM_WWW_REQUEST_SLOWLOG_TRACE_DEPTH 20
+ENV PHP_FPM_WWW_REQUEST_TERMINATE_TIMEOUT 120s
 
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 COPY ./docker-entrypoint.d /docker-entrypoint.d
@@ -74,3 +91,4 @@ COPY ./docker-entrypoint.d /docker-entrypoint.d
 RUN chmod +x /docker-entrypoint.sh
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["php-fpm"]

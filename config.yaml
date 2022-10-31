@@ -1,69 +1,25 @@
 apiVersion: dockerfileGenerator.io/v1beta1
 kind: ModuleMap
 data:
-   phpVersion: "8.0"
-   phpMode: fpm
+   phpVersion: "7.4"
+   phpMode: cli
    includeModules:
-      - amqp
-      - apcu
-      - bcmath
-      - blackfire
-      - bz2
-      - calendar
-      - curl
-      - dba
-      - enchant
-      - exif
-      - gd
-      - gettext
-      - gmp
-      - igbinary
-      - imagick
-      - imap
-      - intl
-      - ioncube
-      - ldap
-      - maxminddb
-      - mbstring
       - mcrypt
-      - memcached
-      - memcache
-      - mongodb
-      - msgpack
-      - mysqli
-      - oauth
-      - opcache
-      - pcntl
-      - pdo_dblib
-      - pdo_mysql
-      - pdo_pgsql
-      - pdo_sqlsrv
-      - pgsql
-      - phalcon
-      - pspell
-      - psr
-      - raphf
-      - rdkafka
-      - redis
-      - shmop
-      - snmp
-      - soap
+      - bcmath
       - sockets
-      - solr
-      - sqlsrv
-      - ssh2
-      - swoole
-      - sysvmsg
-      - sysvsem
-      - sysvshm
-      - tidy
-      - uploadprogress
-      - vips
-      - xdebug
-      - xhprof
-      - xlswriter
-      - xml
-      - xmlrpc
-      - xsl
-      - yaml
+      - intl
+      - amqp
+      - redis
       - zip
+      - mysqli
+      - pdo_mysql
+      - opcache
+      - memcache
+      - curl
+      - mbstring
+      - gd
+      - xml
+      - soap
+      - mongodb
+      - maxminddb
+      - imagick
