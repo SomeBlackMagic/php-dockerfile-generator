@@ -1,4 +1,4 @@
-# -------------------- Installing PHP Extension: pecl --------------------
+# -------------------- Installing PHP Extension: maxminddb --------------------
 RUN set -eux \
     # Installation: Generic
     # Type:         PECL extension

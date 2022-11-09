@@ -21,7 +21,6 @@ RUN set -eux \
 ### Verify
 ###
 RUN set -eux \
-    && echo "date.timezone=UTC" > /usr/local/etc/php/php.ini \
     && php -v | grep -oE 'PHP\s[.0-9]+' | grep -oE '[.0-9]+' | grep '^8.0' \
     \
     && PHP_ERROR="$( php -v 2>&1 1>/dev/null )" \
@@ -48,11 +47,7 @@ RUN set -eux \
     && adduser -u ${MY_UID} -G ${MY_GROUP} -s /bin/sh -D ${MY_USER} \
     && true
 
-# Must set this value for the bash shell to source
-# the '/etc/bashrc' file.
-# See: https://stackoverflow.com/q/29021704
-ENV BASH_ENV /etc/bashrc
-COPY ./data/bashrc /etc/bashrc
+COPY ./data/bash_profile.sh /etc/profile.d/bash_profile.sh
 
 ###
 ### Copy files

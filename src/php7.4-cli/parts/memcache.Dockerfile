@@ -1,4 +1,4 @@
-# -------------------- Installing PHP Extension: mcrypt --------------------
+# -------------------- Installing PHP Extension: memcache --------------------
 RUN set -eux \
     # Installation: Generic
     # Type:         Built-in extension \
